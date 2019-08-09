@@ -24,6 +24,7 @@ namespace StudentLibrary
         {
             if (!optionsBuilder.IsConfigured)
             {
+                optionsBuilder.UseLazyLoadingProxies();
                 optionsBuilder.UseSqlServer("server=localhost\\sqlexpress;database=AppEfDb;trusted_connection=true;");
             }
         }

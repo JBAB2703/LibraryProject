@@ -9,10 +9,21 @@ namespace LibraryProject {
         static void Main(string[] args) {
 
             var lib = new StudentLib();
+
+            //remove a student
+            var johnsmith = lib.GetStudent(2);
+            lib.DeleteStudent(johnsmith);
+            
+            //update jon smith id=(2)
+            var jonsmith = lib.GetStudent(2);
+            jonsmith.Firstname = "John";
+            var success = lib.UpdateStudent(jonsmith);
+
             //get list of all students
             var students = lib.ListStudents();
+
             foreach(var s in students) {
-                Console.WriteLine($"{s.Firstname} {s.Lastname}");
+                Console.WriteLine($"{s.Firstname} {s.Lastname} {s.Major?.Description}");
             }
             //get a student by primary key    
             var student = lib.GetStudent(1);
@@ -21,7 +32,6 @@ namespace LibraryProject {
             }   else {
                 Console.WriteLine($"S4: {student.Firstname} {student.Lastname}");
             }
-
             //this should fail
             var s444 = lib.GetStudent(444);
             if(s444 == null) {
@@ -30,6 +40,6 @@ namespace LibraryProject {
             else {
                 Console.WriteLine($"S444: {student.Firstname} {student.Lastname}");
             }
-            }
+        }
     }
 }
