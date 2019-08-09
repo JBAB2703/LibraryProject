@@ -9,6 +9,20 @@ namespace LibraryProject {
         static void Main(string[] args) {
 
             var lib = new StudentLib();
+            //insert a student (elmer fudd)
+            var ef = new Student
+            {
+                Id = 0,
+                Firstname = "Elmer",
+                Lastname = "Fudd",
+                Sat = 600,
+                Gpa = 1.5,
+                IsFulltime = true,
+                MajorId = 1
+            };
+            var ok = lib.InsertStudent(ef);
+            Console.WriteLine(ef);
+            Console.WriteLine((ok ? "Insert Successful!" : "Insert Failed!"));
 
             //remove a student
             var johnsmith = lib.GetStudent(2);
